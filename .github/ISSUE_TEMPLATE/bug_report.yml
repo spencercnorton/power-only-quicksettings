@@ -1,0 +1,30 @@
+name: Bug report
+description: An icon comes back, the panel does not open, or disabling does not restore the icons.
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please remove machine names, user names and personal paths from anything you paste.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what happened instead.
+      placeholder: After plugging in headphones, the volume icon reappeared next to the power icon.
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versions
+      description: Output of `gnome-shell --version` and `gnome-extensions info power-only-quicksettings@spencercnorton.github.io`
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log excerpt
+      description: The relevant lines from `journalctl --user -b | grep -i power-only`, scrubbed.
+      render: text

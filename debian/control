@@ -1,0 +1,24 @@
+Source: gnome-shell-extension-power-only-quicksettings
+Section: gnome
+Priority: optional
+Maintainer: Norvi <apt@globalentry.systems>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://github.com/spencercnorton/power-only-quicksettings
+Rules-Requires-Root: no
+
+Package: gnome-shell-extension-power-only-quicksettings
+Architecture: all
+Depends:
+ ${misc:Depends},
+ gnome-shell (>= 48~),
+ gnome-shell (<< 51~)
+Description: GNOME Shell extension that shows only a power icon in the top bar
+ Hides every status icon in the Quick Settings area of the top bar except a
+ single power icon. Clicking it still opens the full Quick Settings panel.
+ Icons that GNOME Shell shows again later, for example when the microphone
+ goes live, are hidden again. Disabling the extension puts every icon back as
+ it was.
+ .
+ After installing, log out and back in once, then enable it with
+ `gnome-extensions enable power-only-quicksettings@spencercnorton.github.io`.

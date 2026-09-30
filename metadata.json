@@ -1,0 +1,13 @@
+{
+    "uuid": "power-only-quicksettings@spencercnorton.github.io",
+    "name": "Power Only Quick Settings",
+    "description": "Hide all top-bar status icons in the Quick Settings area except a single power icon. Clicking still opens the full Quick Settings panel.",
+    "shell-version": [
+        "48",
+        "49",
+        "50"
+    ],
+    "url": "https://github.com/spencercnorton/power-only-quicksettings",
+    "version": 4,
+    "version-name": "2.0.0"
+}

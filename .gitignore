@@ -1,0 +1,7 @@
+dist/
+debian/.debhelper/
+debian/files
+debian/gnome-shell-extension-power-only-quicksettings/
+debian/*.substvars
+debian/*.log
+debian/debhelper-build-stamp
