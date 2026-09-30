@@ -31,8 +31,10 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Release invariants
-        run: python3 tests/static-check.py
+      - name: Tests
+        run: |
+          python3 tests/static-check.py
+          node tests/lifecycle.mjs
       - name: Shell scripts
         run: shellcheck scripts/build.sh
       - name: Build twice and compare

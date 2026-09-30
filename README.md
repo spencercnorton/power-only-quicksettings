@@ -69,6 +69,7 @@ The extension is not on extensions.gnome.org.
 
 ```bash
 python3 tests/static-check.py       # what CI runs: one version and one UUID everywhere, extension.js parses
+node tests/lifecycle.mjs            # enable, a change while hidden, and disable, against stub GNOME Shell actors
 scripts/build.sh                    # the release zip and .deb, into dist/
 ```
 

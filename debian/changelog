@@ -1,3 +1,10 @@
+gnome-shell-extension-power-only-quicksettings (2.0.1) resolute; urgency=medium
+
+  * An indicator that turned on while the extension was enabled, such as the
+    microphone going live, shows again on disable and on the lock screen.
+
+ -- Norvi <apt@globalentry.systems>  Wed, 30 Sep 2026 00:00:00 +0000
+
 gnome-shell-extension-power-only-quicksettings (2.0.0) resolute; urgency=medium
 
   * First public release. The UUID is now

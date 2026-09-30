@@ -2,6 +2,10 @@
 
 All notable changes to Power Only Quick Settings are documented here.
 
+## 2.0.1 — 2026-09-30
+
+- An indicator that turned on while the extension was enabled now shows again when the extension is disabled. Before, disabling restored each indicator's visibility from when the extension was enabled, so a microphone that went live meanwhile stayed hidden. GNOME Shell disables the extension on the lock screen, so the lock screen hid it too.
+
 ## 2.0.0 — 2026-09-29
 
 The first public release.
