@@ -16,6 +16,7 @@ personal address private. Public history is public data.
 
 ```bash
 python3 tests/static-check.py       # what CI runs
+node tests/lifecycle.mjs
 scripts/build.sh                    # build the release zip and .deb
 ```
 

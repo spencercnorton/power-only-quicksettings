@@ -22,5 +22,5 @@ touch -d "@$stamp" "$stage"/*
 (cd "$root" && dpkg-buildpackage -us -uc -b)
 mv "$root/../${pkg}_${version}_all.deb" "$out/"
 rm -f "$root/../${pkg}_${version}"_*.buildinfo "$root/../${pkg}_${version}"_*.changes
-dpkg-deb -c "$out/${pkg}_${version}_all.deb" | grep -q "usr/share/gnome-shell/extensions/$uuid/extension.js"
+dpkg-deb -c "$out/${pkg}_${version}_all.deb" | grep -F "usr/share/gnome-shell/extensions/$uuid/extension.js" >/dev/null
 ls -l "$out"

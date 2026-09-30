@@ -57,7 +57,13 @@ export default class PowerOnlyQuickSettings extends Extension {
                     continue;
                 // Disconnect before restoring, or the handler re-hides everything.
                 child.disconnectObject(this);
-                if (child._powerOnlyPrevVisible)
+                // A Quick Settings indicator recomputes its visibility only when one of
+                // its icons changes, so one that changed while hidden (the microphone
+                // going live) would keep its old value. Let it recompute from its icons;
+                // anything else gets back what it had before enable().
+                if (typeof child._syncIndicatorsVisible === 'function')
+                    child._syncIndicatorsVisible();
+                else if (child._powerOnlyPrevVisible)
                     child.show();
                 delete child._powerOnlyPrevVisible;
             }
