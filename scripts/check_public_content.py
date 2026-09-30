@@ -25,7 +25,10 @@ def main():
         # An invalid base must fail closed rather than skip inspection.
         git("cat-file", "-e", base + "^{commit}")
     else:
-        base = git("rev-parse", "HEAD^").decode().strip()
+        # A repository's first commit has no parent: all of it is new content,
+        # so compare it with the empty tree rather than failing or skipping.
+        parents = git("rev-list", "--parents", "-n", "1", "HEAD").decode().split()[1:]
+        base = parents[0] if parents else git("hash-object", "-t", "tree", "/dev/null").decode().strip()
     paths = git("diff", "--name-only", "--diff-filter=ACMR", "-z", base, "HEAD").decode().split("\0")
     failures = []
     for name in filter(None, paths):

@@ -58,6 +58,22 @@ class PublicContentTests(unittest.TestCase):
     def test_binary_archive_is_blocked(self):
         self.assertNotEqual(self.check_change("backup.zip", b"PK\x00\x01").returncode, 0)
 
+    def test_first_commit_is_checked_whole(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p = Path(temp)
+            def git(*args):
+                subprocess.check_output(["git", *args], cwd=p, stderr=subprocess.DEVNULL)
+            git("init", "-q")
+            git("config", "user.name", "Demo")
+            git("config", "user.email", "demo@example.com")
+            (p / "notes.md").write_text("OP" + "#1234\n")
+            git("add", ".")
+            git("commit", "-qm", "first")
+            env = {k: v for k, v in os.environ.items() if k != "BASE_SHA"}
+            result = subprocess.run(["python3", str(SCANNER)], cwd=p, env=env, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("notes.md", result.stdout)
+
     def test_example_environment_file_passes(self):
         self.assertEqual(self.check_change(".env.example", "MODE=demo\n").returncode, 0)
 
